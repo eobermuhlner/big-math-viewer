@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.9'
+}
+
+version = '0.0.1'
+mainClassName = 'ch.obermuhlner.math.big.viewer.GraphApp'
+applicationName = 'Graph Viewer'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+javafx {
+    version = "15.0.1"
+    modules = [ 'javafx.controls' ]
+}
+
+dependencies {
+	compile group: 'ch.obermuhlner', name: 'big-math', version: '2.3.0'
+
+    testCompile 'junit:junit:4.12'
+}
+
+jar {
+	baseName 'graph-viewer'
+	manifest {
+		attributes 'Implementation-Title' : applicationName,
+			'Implementation-Version' : version,
+			'Implementation-Vendor' : 'Eric Obermuhlner',
+			'Implementation-URL' : 'https://github.com/eobermuhlner/big-math',
+			'Main-Class' : mainClassName
+	}
+}
